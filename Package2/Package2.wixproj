@@ -4,9 +4,9 @@
     <Content Include="Assets\logo.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\example_ui.pdf" />
+    <PackageReference Include="WixToolset.UI.wixext" Version="5.0.2" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="WixToolset.UI.wixext" Version="5.0.2" />
+    <None Include="Assets\installer-UI.pdf" />
   </ItemGroup>
 </Project>
