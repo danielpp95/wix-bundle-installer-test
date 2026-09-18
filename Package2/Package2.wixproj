@@ -1,0 +1,12 @@
+﻿<Project Sdk="WixToolset.Sdk/5.0.2">
+  <ItemGroup>
+    <Content Include="Assets\banner.png" />
+    <Content Include="Assets\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\example_ui.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.UI.wixext" Version="5.0.2" />
+  </ItemGroup>
+</Project>

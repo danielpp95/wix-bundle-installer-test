@@ -1,0 +1,12 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="MauiApp1/MauiApp1.csproj" />
+  <Project Path="Package2/Package2.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0" Id="d587f741-2972-4a7a-89a5-c4cd8996aa5d">
+    <Platform Solution="*|Any CPU" Project="x64" />
+  </Project>
+</Solution>
