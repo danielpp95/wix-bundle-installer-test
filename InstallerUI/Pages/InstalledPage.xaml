@@ -1,0 +1,16 @@
+<UserControl x:Class="InstallerUI.Pages.InstalledPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel>
+        <TextBlock x:Name="MessageText"
+                   TextWrapping="Wrap"
+                   FontSize="14"
+                   Foreground="#595959"
+                   Text="The app was installed successfully" />
+
+        <CheckBox x:Name="LaunchAppCheckBox"
+                  Content="Open the app on finish"
+                  Foreground="#595959"
+                  Margin="0,16,0,0" />
+    </StackPanel>
+</UserControl>

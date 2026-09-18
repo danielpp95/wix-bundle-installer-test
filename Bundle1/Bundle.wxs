@@ -1,10 +1,15 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Bundle Name="Bundle1"
           Manufacturer="TODO Manufacturer"
           Version="1.0.0.0"
           UpgradeCode="34343434-3434-3434-3434-343434343434">
-    <BootstrapperApplication>
-      <bal:WixStandardBootstrapperApplication LicenseUrl="https://www.example.com/license" Theme="hyperlinkLicense" />
+
+    <Variable Name="InstallFolder" Type="formatted" Value="[ProgramFilesFolder]MyApp" Persisted="yes" />
+
+    <BootstrapperApplication SourceFile="$(var.InstallerUI.TargetPath)">
+      <Payload SourceFile="$(var.InstallerUI.TargetDir)WixToolset.BootstrapperApplicationApi.dll" />
+      <Payload SourceFile="$(var.InstallerUI.TargetDir)mbanative.dll" />
+      <Payload SourceFile="$(var.InstallerUI.TargetDir)InstallerUI.exe.config" />
     </BootstrapperApplication>
 
     <Chain>

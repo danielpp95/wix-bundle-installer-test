@@ -3,9 +3,7 @@
     <OutputType>Bundle</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WixToolset.BootstrapperApplications.wixext" Version="5.0.2" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Package2\Package2.wixproj" />
+    <ProjectReference Include="..\InstallerUI\InstallerUI.csproj" />
   </ItemGroup>
 </Project>

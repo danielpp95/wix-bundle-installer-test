@@ -8,6 +8,9 @@
   <Project Path="Bundle1/Bundle1.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0" Id="1c3925bf-cc7b-4934-8caf-066e3227538b">
     <Platform Solution="*|Any CPU" Project="x64" />
   </Project>
+  <Project Path="InstallerUI/InstallerUI.csproj">
+    <Platform Project="x86" />
+  </Project>
   <Project Path="MauiApp1/MauiApp1.csproj" />
   <Project Path="Package2/Package2.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0" Id="d587f741-2972-4a7a-89a5-c4cd8996aa5d">
     <Platform Solution="*|Any CPU" Project="x64" />
