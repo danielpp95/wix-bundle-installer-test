@@ -55,7 +55,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="72" />
+            <RowDefinition Height="15" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="56" />
@@ -63,7 +63,7 @@
 
         <!-- Banner -->
         <Border Grid.Row="0" ClipToBounds="True" Background="White">
-            <Image x:Name="BannerImage" Stretch="UniformToFill" Margin="0,0,0,57" />
+            <Image x:Name="BannerImage" Stretch="UniformToFill" Margin="0,0,0,0" Source="/Assets/banner.png" />
         </Border>
 
         <!-- Header (logo + contextual page title) and page content -->
@@ -73,9 +73,9 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,12">
-                <Image x:Name="LogoImage" Width="56" Height="56" Stretch="Uniform" />
-                <TextBlock x:Name="PageTitleText" Style="{StaticResource PageHeading}" Margin="14,0,0,0" />
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,-12,0,12">
+                <Image x:Name="LogoImage" Width="56" Height="56" Stretch="Uniform" Source="/Assets/logo.jpg" />
+                <TextBlock x:Name="PageTitleText" Style="{StaticResource PageHeading}" Margin="14,0,0,0" Text="title..." />
             </StackPanel>
 
             <ContentControl x:Name="PageHost" Grid.Row="1" />

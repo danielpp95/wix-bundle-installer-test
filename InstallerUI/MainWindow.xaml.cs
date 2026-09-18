@@ -32,15 +32,6 @@ namespace InstallerUI
         public MainWindow()
         {
             this.InitializeComponent();
-
-            this.BannerImage.Source = LoadAsset("banner.png");
-            this.LogoImage.Source = LoadAsset("logo.jpg");
-        }
-
-        private static BitmapImage LoadAsset(string fileName)
-        {
-            var uri = new Uri($"pack://application:,,,/InstallerUI;component/Assets/{fileName}", UriKind.Absolute);
-            return new BitmapImage(uri);
         }
 
         public void Navigate(UserControl page, string pageTitle, params DialogButtonSpec[] buttons)
