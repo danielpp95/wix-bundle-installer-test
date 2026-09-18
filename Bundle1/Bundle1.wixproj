@@ -1,9 +1,11 @@
-﻿<Project Sdk="WixToolset.Sdk/7.0.0">
+﻿<Project Sdk="WixToolset.Sdk/5.0.2">
   <PropertyGroup>
     <OutputType>Bundle</OutputType>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="WixToolset.BootstrapperApplications.wixext" Version="7.0.0" />
+    <PackageReference Include="WixToolset.BootstrapperApplications.wixext" Version="5.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Package2\Package2.wixproj" />
   </ItemGroup>
 </Project>
