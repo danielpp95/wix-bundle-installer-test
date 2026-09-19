@@ -25,4 +25,10 @@
     <Resource Include="Assets\Eula.rtf" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Pages\BasePage.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
 </Project>

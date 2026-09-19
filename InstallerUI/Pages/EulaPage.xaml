@@ -1,6 +1,7 @@
-<UserControl x:Class="InstallerUI.Pages.EulaPage"
+<local:BasePage x:Class="InstallerUI.Pages.EulaPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:InstallerUI.Pages">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -21,4 +22,4 @@
                   Checked="OnAcceptChanged"
                   Unchecked="OnAcceptChanged" />
     </Grid>
-</UserControl>
+</local:BasePage>

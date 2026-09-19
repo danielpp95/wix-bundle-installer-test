@@ -1,6 +1,7 @@
-<UserControl x:Class="InstallerUI.Pages.ReadyToInstallPage"
+<local:BasePage x:Class="InstallerUI.Pages.ReadyToInstallPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:InstallerUI.Pages">
     <StackPanel>
         <TextBlock x:Name="MessageText"
                    TextWrapping="Wrap"
@@ -8,4 +9,4 @@
                    Foreground="#595959"
                    Text="Click install to begin the installation." />
     </StackPanel>
-</UserControl>
+</local:BasePage>

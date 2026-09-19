@@ -1,6 +1,7 @@
-<UserControl x:Class="InstallerUI.Pages.InstalledPage"
+<local:BasePage x:Class="InstallerUI.Pages.InstalledPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:InstallerUI.Pages">
     <StackPanel>
         <TextBlock x:Name="MessageText"
                    TextWrapping="Wrap"
@@ -13,4 +14,4 @@
                   Foreground="#595959"
                   Margin="0,16,0,0" />
     </StackPanel>
-</UserControl>
+</local:BasePage>

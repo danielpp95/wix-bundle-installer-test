@@ -4,6 +4,7 @@ namespace InstallerUI
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media.Imaging;
+    using InstallerUI.Pages;
 
     public class DialogButtonSpec
     {
@@ -34,13 +35,13 @@ namespace InstallerUI
             this.InitializeComponent();
         }
 
-        public void Navigate(UserControl page, string pageTitle, params DialogButtonSpec[] buttons)
+        public void Navigate(BasePage page)
         {
-            this.PageTitleText.Text = pageTitle;
+            this.PageTitleText.Text = page.PageTitle;
             this.PageHost.Content = page;
 
             this.ButtonBar.Children.Clear();
-            foreach (var spec in buttons)
+            foreach (var spec in page.buttons)
             {
                 var button = new Button
                 {

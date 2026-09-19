@@ -2,11 +2,16 @@ namespace InstallerUI.Pages
 {
     using System.Windows.Controls;
 
-    public partial class InstalledPage : UserControl
+    public partial class InstalledPage : BasePage
     {
         public InstalledPage()
         {
             this.InitializeComponent();
+            this.PageTitle = InstallerBootstrapperApplication.IsUninstall ? "Uninstalled" : "Installed successfully";
+            this.buttons = new[]
+            {
+                new DialogButtonSpec("Finish", true, (s, e) => this.Finish(), isDefault: true, isCancel: true),
+            };
         }
 
         public string Message

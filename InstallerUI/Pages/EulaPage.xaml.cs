@@ -6,12 +6,24 @@ namespace InstallerUI.Pages
     using System.Windows.Controls;
     using System.Windows.Documents;
 
-    public partial class EulaPage : UserControl
+    public partial class EulaPage : BasePage
     {
         public EulaPage()
         {
             this.InitializeComponent();
+            this.PageTitle = "End-User legal agreement";
             this.LoadEulaFromResource();
+            this.RebuildButtons();
+        }
+
+        private void RebuildButtons()
+        {
+            this.buttons = new[]
+            {
+                new DialogButtonSpec("Cancel", true, (s, e) => this.Cancel(), isCancel: true),
+                new DialogButtonSpec("Prev", true, (s, e) => this.ShowPreviousPage()),
+                new DialogButtonSpec("Next", this.IsAccepted, (s, e) => this.ShowNextPage(), isDefault: true),
+            };
         }
 
         public event EventHandler AcceptedChanged;
@@ -34,7 +46,10 @@ namespace InstallerUI.Pages
             }
         }
 
-        private void OnAcceptChanged(object sender, RoutedEventArgs e) =>
+        private void OnAcceptChanged(object sender, RoutedEventArgs e)
+        {
+            this.RebuildButtons();
             this.AcceptedChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

@@ -2,11 +2,17 @@ namespace InstallerUI.Pages
 {
     using System.Windows.Controls;
 
-    public partial class PresentationPage : UserControl
+    public partial class PresentationPage : BasePage
     {
         public PresentationPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            this.PageTitle = "My super app installer";
+            this.buttons = new[]
+            {
+                new DialogButtonSpec("Cancel", true, (s, e) => this.Cancel(), isCancel: true),
+                new DialogButtonSpec("Next", true, (s, e) => this.ShowNextPage(), isDefault: true),
+            };
         }
 
         public string Description
