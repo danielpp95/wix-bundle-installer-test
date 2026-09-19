@@ -1,16 +1,35 @@
 namespace InstallerUI.Pages
 {
-    using System.Windows.Controls;
+    using InstallerUI.Models;
 
     public partial class InstalledPage : BasePage
     {
-        public InstalledPage()
+        public InstalledPage(InstallerContext context)
         {
             this.InitializeComponent();
-            this.PageTitle = InstallerBootstrapperApplication.IsUninstall ? "Uninstalled" : "Installed successfully";
-            this.buttons = new[]
+
+            switch (context.Flow)
             {
-                new DialogButtonSpec("Finish", true, (s, e) => this.Finish(), isDefault: true, isCancel: true),
+                case InstallerFlow.Uninstall:
+                    this.PageTitle = Strings.UninstalledTitle;
+                    this.Message = Strings.UninstalledMessage;
+                    break;
+                case InstallerFlow.Repair:
+                    this.PageTitle = Strings.RepairedTitle;
+                    this.Message = Strings.RepairedMessage;
+                    break;
+                default:
+                    this.PageTitle = Strings.InstalledTitle;
+                    this.Message = Strings.InstalledMessage;
+                    break;
+            }
+
+            // "Open the app on finish" only makes sense right after a fresh install.
+            this.ShowLaunchOption = context.Flow == InstallerFlow.Install;
+
+            this.Buttons = new[]
+            {
+                new DialogButtonSpec(Strings.FinishButton, true, (s, e) => this.Host.Finish(), isDefault: true, isCancel: true),
             };
         }
 

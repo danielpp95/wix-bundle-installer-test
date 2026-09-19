@@ -1,9 +1,7 @@
 namespace InstallerUI.Pages
 {
     using System;
-    using System.IO;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Documents;
 
     public partial class EulaPage : BasePage
@@ -11,24 +9,22 @@ namespace InstallerUI.Pages
         public EulaPage()
         {
             this.InitializeComponent();
-            this.PageTitle = "End-User legal agreement";
+            this.PageTitle = Strings.EulaTitle;
             this.LoadEulaFromResource();
             this.RebuildButtons();
         }
 
+        public bool IsAccepted => this.AcceptCheckBox.IsChecked == true;
+
         private void RebuildButtons()
         {
-            this.buttons = new[]
+            this.Buttons = new[]
             {
-                new DialogButtonSpec("Cancel", true, (s, e) => this.Cancel(), isCancel: true),
-                new DialogButtonSpec("Prev", true, (s, e) => this.ShowPreviousPage()),
-                new DialogButtonSpec("Next", this.IsAccepted, (s, e) => this.ShowNextPage(), isDefault: true),
+                new DialogButtonSpec(Strings.CancelButton, true, (s, e) => this.Host.Cancel(), isCancel: true),
+                new DialogButtonSpec(Strings.PrevButton, true, (s, e) => this.Host.ShowPreviousPage()),
+                new DialogButtonSpec(Strings.NextButton, this.IsAccepted, (s, e) => this.Host.ShowNextPage(), isDefault: true),
             };
         }
-
-        public event EventHandler AcceptedChanged;
-
-        public bool IsAccepted => this.AcceptCheckBox.IsChecked == true;
 
         private void LoadEulaFromResource()
         {
@@ -48,8 +44,10 @@ namespace InstallerUI.Pages
 
         private void OnAcceptChanged(object sender, RoutedEventArgs e)
         {
+            // The Next button's enabled state depends on the checkbox, so every button in
+            // the bar has to be rebuilt (and the host asked to refresh) whenever it flips.
             this.RebuildButtons();
-            this.AcceptedChanged?.Invoke(this, EventArgs.Empty);
+            this.Host?.RefreshButtons(this);
         }
     }
 }

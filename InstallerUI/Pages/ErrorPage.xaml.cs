@@ -1,17 +1,23 @@
 namespace InstallerUI.Pages
 {
-    using System.Windows.Controls;
+    using InstallerUI.Models;
 
     public partial class ErrorPage : BasePage
     {
-        public ErrorPage()
+        public ErrorPage(InstallerContext context)
         {
             this.InitializeComponent();
 
-            this.PageTitle = "Error";
-            this.buttons = new[]
+            this.PageTitle = context.Flow switch
             {
-                new DialogButtonSpec("Close", true, (s, e) => this.Finish(), isDefault: true, isCancel: true),
+                InstallerFlow.Uninstall => Strings.UninstallFailedTitle,
+                InstallerFlow.Repair => Strings.RepairFailedTitle,
+                _ => Strings.SetupFailedTitle,
+            };
+
+            this.Buttons = new[]
+            {
+                new DialogButtonSpec(Strings.CloseButton, true, (s, e) => this.Host.Finish(), isDefault: true, isCancel: true),
             };
         }
 

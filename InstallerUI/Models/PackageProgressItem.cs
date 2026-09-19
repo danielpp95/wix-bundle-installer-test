@@ -6,6 +6,7 @@ namespace InstallerUI.Models
     {
         Waiting,
         Installing,
+        RollingBack,
         Done,
         Failed,
     }
@@ -46,6 +47,8 @@ namespace InstallerUI.Models
                 {
                     case PackageStepStatus.Installing:
                         return "Installing";
+                    case PackageStepStatus.RollingBack:
+                        return "Rolling back";
                     case PackageStepStatus.Done:
                         return "Done";
                     case PackageStepStatus.Failed:

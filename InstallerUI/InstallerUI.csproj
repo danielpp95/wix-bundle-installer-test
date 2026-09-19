@@ -7,6 +7,15 @@
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>InstallerUI</AssemblyName>
     <RootNamespace>InstallerUI</RootNamespace>
+    <!--
+      Must stay x86. WiX v5's out-of-process bootstrapper application model ships a native
+      pipe-connection shim (mbanative.dll, from the WixToolset.BootstrapperApplicationApi
+      package) that is only built for x86, and Bundle1's Burn stub is x86 too. Building this
+      project for AnyCPU/x64 does not fail at compile time - it fails at install time with
+      "Failed to wait for bootstrapper application to connect to pipe" (0x80070080), or a
+      COMException("Cannot change thread mode after it is set") if run standalone. Keep this
+      in lockstep with whatever platform Bundle1.wixproj/Bundle.wxs targets.
+    -->
     <Platforms>x86</Platforms>
     <PlatformTarget>x86</PlatformTarget>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>

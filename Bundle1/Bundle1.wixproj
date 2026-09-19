@@ -6,4 +6,28 @@
     <ProjectReference Include="..\Package2\Package2.wixproj" />
     <ProjectReference Include="..\InstallerUI\InstallerUI.csproj" />
   </ItemGroup>
+
+  <!--
+    Bundle.wxs ships InstallerUI's runtime dependencies as explicit <Payload> elements by
+    exact filename, because HarvestPayloadFolder (which would harvest them automatically)
+    is FireGiant's commercial HeatWave extension, not part of free/official WiX. That means
+    the payload list can silently drift from what InstallerUI.csproj actually produces - a
+    missing DLL doesn't fail this build, it fails at install time on a customer's machine
+    with "Failed to wait for bootstrapper application to connect to pipe" (0x80070080).
+    This target catches that drift locally instead.
+  -->
+  <Target Name="VerifyInstallerUiPayloads" BeforeTargets="Build">
+    <PropertyGroup>
+      <_InstallerUiOutputDir>$(MSBuildThisFileDirectory)..\InstallerUI\bin\$(Configuration)\</_InstallerUiOutputDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <_InstallerUiActualDll Include="$(_InstallerUiOutputDir)*.dll" />
+      <_InstallerUiExpectedDll Include="WixToolset.BootstrapperApplicationApi.dll" />
+      <_InstallerUiExpectedDll Include="mbanative.dll" />
+      <_InstallerUiUnexpectedDll Include="@(_InstallerUiActualDll)" Exclude="@(_InstallerUiExpectedDll -> '$(_InstallerUiOutputDir)%(Identity)')" />
+    </ItemGroup>
+    <Error
+      Condition="'@(_InstallerUiUnexpectedDll)' != ''"
+      Text="InstallerUI's build output contains a DLL that Bundle.wxs does not ship as a &lt;Payload&gt; of the BootstrapperApplication: @(_InstallerUiUnexpectedDll). Add it to Bundle.wxs (or to the _InstallerUiExpectedDll list in this target, in Bundle1.wixproj, if it is genuinely not needed at runtime)." />
+  </Target>
 </Project>
