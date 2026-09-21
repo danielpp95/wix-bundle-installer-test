@@ -10,6 +10,8 @@ namespace InstallerUI.Pages
         {
             this.InitializeComponent();
             this.PageTitle = Strings.EulaTitle;
+            this.StepLabels = Strings.InstallSteps;
+            this.StepIndex = 1;
             this.LoadEulaFromResource();
             this.RebuildButtons();
         }

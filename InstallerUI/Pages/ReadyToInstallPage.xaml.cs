@@ -16,16 +16,22 @@ namespace InstallerUI.Pages
                     this.PageTitle = Strings.ReadyToUninstallTitle;
                     this.Message = Strings.ReadyToUninstallMessage;
                     actionLabel = Strings.UninstallButton;
+                    this.StepLabels = Strings.UninstallSteps;
+                    this.StepIndex = 0;
                     break;
                 case InstallerFlow.Repair:
                     this.PageTitle = Strings.ReadyToRepairTitle;
                     this.Message = Strings.ReadyToRepairMessage;
                     actionLabel = Strings.RepairButton;
+                    this.StepLabels = Strings.RepairSteps;
+                    this.StepIndex = 0;
                     break;
                 default:
                     this.PageTitle = Strings.ReadyToInstallTitle;
                     this.Message = Strings.ReadyToInstallMessage;
                     actionLabel = Strings.InstallButton;
+                    this.StepLabels = Strings.InstallSteps;
+                    this.StepIndex = 3;
                     break;
             }
 

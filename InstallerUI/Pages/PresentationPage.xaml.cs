@@ -7,6 +7,8 @@ namespace InstallerUI.Pages
             this.InitializeComponent();
             this.PageTitle = Strings.PresentationTitle;
             this.Description = Strings.PresentationDescription;
+            this.StepLabels = Strings.InstallSteps;
+            this.StepIndex = 0;
             this.Buttons = new[]
             {
                 new DialogButtonSpec(Strings.CancelButton, true, (s, e) => this.Host.Cancel(), isCancel: true),

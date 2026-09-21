@@ -29,5 +29,11 @@ namespace InstallerUI.Pages
         public DialogButtonSpec[] Buttons { get; protected set; } = Array.Empty<DialogButtonSpec>();
 
         public INavigationHost Host { get; set; }
+
+        /// <summary>Step labels for the wizard's step indicator, for whichever flow this page belongs to (Install vs. Uninstall/Repair).</summary>
+        public string[] StepLabels { get; protected set; } = Array.Empty<string>();
+
+        /// <summary>This page's 0-based position within StepLabels.</summary>
+        public int StepIndex { get; protected set; }
     }
 }

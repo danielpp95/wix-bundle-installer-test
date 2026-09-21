@@ -4,14 +4,13 @@
              xmlns:local="clr-namespace:InstallerUI.Pages">
     <StackPanel>
         <TextBlock x:Name="MessageText"
-                   TextWrapping="Wrap"
-                   FontSize="14"
-                   Foreground="#595959"
+                   Style="{StaticResource Text.Body}"
+                   Foreground="{DynamicResource Brush.Status.Success}"
                    Text="The app was installed successfully" />
 
         <CheckBox x:Name="LaunchAppCheckBox"
+                  Style="{StaticResource CheckBox.Default}"
                   Content="Open the app on finish"
-                  Foreground="#595959"
-                  Margin="0,16,0,0" />
+                  Margin="0,18,0,0" />
     </StackPanel>
 </local:BasePage>

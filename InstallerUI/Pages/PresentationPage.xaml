@@ -4,9 +4,7 @@
              xmlns:local="clr-namespace:InstallerUI.Pages">
     <StackPanel>
         <TextBlock x:Name="DescriptionText"
-                   TextWrapping="Wrap"
-                   FontSize="14"
-                   Foreground="#595959"
+                   Style="{StaticResource Text.Body}"
                    Text="This is a generic installer for windows apps using wix" />
     </StackPanel>
 </local:BasePage>

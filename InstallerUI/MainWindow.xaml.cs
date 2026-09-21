@@ -54,17 +54,22 @@ namespace InstallerUI
         {
             this.PageTitleText.Text = page.PageTitle;
             this.PageHost.Content = page;
+            this.StepIndicator.Steps = page.StepLabels;
+            this.StepIndicator.CurrentStep = page.StepIndex;
 
             this.ButtonBar.Children.Clear();
             foreach (var spec in page.Buttons)
             {
+                // The one default action on a page (Next/Install/Finish) is Primary
+                // (filled); everything else (Cancel/Prev/Back) is Secondary (outlined) -
+                // see the wizard reference in Assets/examples/wizard.png.
                 var button = new Button
                 {
                     Content = spec.Text,
                     IsEnabled = spec.IsEnabled,
                     IsDefault = spec.IsDefault,
                     IsCancel = spec.IsCancel,
-                    Style = (Style)this.FindResource("DialogButton"),
+                    Style = (Style)this.FindResource(spec.IsDefault ? "Button.Primary" : "Button.Secondary"),
                 };
                 button.Click += spec.OnClick;
                 this.ButtonBar.Children.Add(button);

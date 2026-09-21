@@ -32,6 +32,7 @@
     <Resource Include="..\Package2\Assets\banner.png" Link="Assets\banner.png" />
     <Resource Include="..\Package2\Assets\logo.jpg" Link="Assets\logo.jpg" />
     <Resource Include="Assets\Eula.rtf" />
+    <Resource Include="Assets\fonts-ttf\*.ttf" />
   </ItemGroup>
 
   <ItemGroup>

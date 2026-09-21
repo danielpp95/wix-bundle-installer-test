@@ -121,6 +121,7 @@ namespace InstallerUI
             this._unattended = !showWizard;
 
             this._app = new Application();
+            LoadStyles(this._app);
 
             this._window = new MainWindow();
             this._window.Closing += (s, e) =>
@@ -161,6 +162,20 @@ namespace InstallerUI
             this.engine.Detect();
 
             this._app.Run(this._window);
+        }
+
+        /// <summary>
+        /// Merges the shared style dictionaries into Application.Resources once, so every
+        /// page's {StaticResource}/{DynamicResource} lookups resolve regardless of which
+        /// page loads first. There is no App.xaml to do this declaratively (see Program.cs).
+        /// </summary>
+        private static void LoadStyles(Application app)
+        {
+            foreach (var name in new[] { "Colors", "Typography", "Buttons", "CheckBox" })
+            {
+                var uri = new Uri($"pack://application:,,,/InstallerUI;component/Styles/{name}.xaml", UriKind.Absolute);
+                app.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = uri });
+            }
         }
 
         private void CreatePages()

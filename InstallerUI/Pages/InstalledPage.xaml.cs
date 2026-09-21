@@ -13,14 +13,20 @@ namespace InstallerUI.Pages
                 case InstallerFlow.Uninstall:
                     this.PageTitle = Strings.UninstalledTitle;
                     this.Message = Strings.UninstalledMessage;
+                    this.StepLabels = Strings.UninstallSteps;
+                    this.StepIndex = 1;
                     break;
                 case InstallerFlow.Repair:
                     this.PageTitle = Strings.RepairedTitle;
                     this.Message = Strings.RepairedMessage;
+                    this.StepLabels = Strings.RepairSteps;
+                    this.StepIndex = 1;
                     break;
                 default:
                     this.PageTitle = Strings.InstalledTitle;
                     this.Message = Strings.InstalledMessage;
+                    this.StepLabels = Strings.InstallSteps;
+                    this.StepIndex = 4;
                     break;
             }
 

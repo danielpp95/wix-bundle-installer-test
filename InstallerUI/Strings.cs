@@ -8,6 +8,12 @@ namespace InstallerUI
     /// </summary>
     internal static class Strings
     {
+        // Step-indicator labels for the wizard header. Install walks through all five;
+        // Uninstall/Repair skip straight to their own two-step version of the same idea.
+        public static readonly string[] InstallSteps = { "Home", "EULA", "Location", "Install", "Installed" };
+        public static readonly string[] UninstallSteps = { "Uninstall", "Uninstalled" };
+        public static readonly string[] RepairSteps = { "Repair", "Repaired" };
+
         public const string PresentationTitle = "My super app installer";
         public const string PresentationDescription = "This is a generic installer for windows apps using wix";
 
@@ -26,6 +32,7 @@ namespace InstallerUI
         public const string InstallingTitle = "Installing";
         public const string UninstallingTitle = "Uninstalling";
         public const string RepairingTitle = "Repairing";
+        public const string ProceedingStatus = "Proceeding...";
 
         public const string InstalledTitle = "Installed successfully";
         public const string UninstalledTitle = "Uninstalled";

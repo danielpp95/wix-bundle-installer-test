@@ -10,12 +10,11 @@
         </Grid.RowDefinitions>
 
         <TextBlock x:Name="MessageText" Grid.Row="0"
-                   TextWrapping="Wrap"
-                   FontSize="14"
-                   Foreground="#C0392B"
+                   Style="{StaticResource Text.Body}"
+                   Foreground="{DynamicResource Brush.Status.Error}"
                    Text="Setup failed." />
 
-        <TextBlock Grid.Row="1" Text="Details:" Foreground="#595959" Margin="0,14,0,4" />
+        <TextBlock Grid.Row="1" Text="Details:" Style="{StaticResource Text.Caption}" Margin="0,14,0,4" />
 
         <TextBox x:Name="DetailsTextBox" Grid.Row="2"
                  IsReadOnly="True"
@@ -23,8 +22,8 @@
                  HorizontalScrollBarVisibility="Auto"
                  FontFamily="Consolas"
                  FontSize="11"
-                 Background="#FAFAFA"
-                 BorderBrush="#8A8A8A"
+                 Background="{DynamicResource Brush.Surface.Muted}"
+                 BorderBrush="{DynamicResource Brush.Border}"
                  TextWrapping="NoWrap" />
     </Grid>
 </local:BasePage>

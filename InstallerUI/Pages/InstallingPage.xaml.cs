@@ -10,13 +10,26 @@ namespace InstallerUI.Pages
         {
             this.InitializeComponent();
             this.PackagesList.ItemsSource = packages;
+            this.Loader.StatusText = Strings.ProceedingStatus;
 
-            this.PageTitle = context.Flow switch
+            switch (context.Flow)
             {
-                InstallerFlow.Uninstall => Strings.UninstallingTitle,
-                InstallerFlow.Repair => Strings.RepairingTitle,
-                _ => Strings.InstallingTitle,
-            };
+                case InstallerFlow.Uninstall:
+                    this.PageTitle = Strings.UninstallingTitle;
+                    this.StepLabels = Strings.UninstallSteps;
+                    this.StepIndex = 0;
+                    break;
+                case InstallerFlow.Repair:
+                    this.PageTitle = Strings.RepairingTitle;
+                    this.StepLabels = Strings.RepairSteps;
+                    this.StepIndex = 0;
+                    break;
+                default:
+                    this.PageTitle = Strings.InstallingTitle;
+                    this.StepLabels = Strings.InstallSteps;
+                    this.StepIndex = 3;
+                    break;
+            }
 
             // Cancel is the only live control here; Prev/Next are shown disabled purely so
             // the button bar doesn't visibly shrink and grow between pages.
@@ -30,8 +43,8 @@ namespace InstallerUI.Pages
 
         public int OverallPercentage
         {
-            get => (int)this.OverallProgressBar.Value;
-            set => this.OverallProgressBar.Value = value;
+            get => this.Loader.Percentage;
+            set => this.Loader.Percentage = value;
         }
 
         public void AppendLog(string line)

@@ -4,9 +4,7 @@
              xmlns:local="clr-namespace:InstallerUI.Pages">
     <StackPanel>
         <TextBlock x:Name="MessageText"
-                   TextWrapping="Wrap"
-                   FontSize="14"
-                   Foreground="#595959"
+                   Style="{StaticResource Text.Body}"
                    Text="Click install to begin the installation." />
     </StackPanel>
 </local:BasePage>
